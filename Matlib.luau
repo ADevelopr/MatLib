@@ -94,8 +94,9 @@ function MatLib:CreateWindow(Name, Theme)
 	UiName.BackgroundTransparency = 1
 	UiName.Size = UDim2.new(0.5, 0, 1, 0)
 	UiName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	UiName.Text = "Example Lib"
-	UiName.Name = Name
+	UiName.Text = Name
+	UiName.Name = "Name"
+	Instance.new("UIPadding").PaddingLeft = UDim.new(0, 8)
 	
 	local Close = Instance.new("ImageButton", Topbar)
 	Close.BorderSizePixel = 0
