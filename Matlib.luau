@@ -95,7 +95,7 @@ function MatLib:CreateWindow(Name, Theme)
 	UiName.Size = UDim2.new(0.5, 0, 1, 0)
 	UiName.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	UiName.Text = "Example Lib"
-	UiName.Name = "Name"
+	UiName.Name = Name
 	
 	local Close = Instance.new("ImageButton", Topbar)
 	Close.BorderSizePixel = 0
@@ -122,6 +122,7 @@ function MatLib:CreateWindow(Name, Theme)
 	showUi.Text = "Show Ui"
 	showUi.Name = "Show Ui"
 	showUi.Position = UDim2.new(0.45172, 0, 0.12371, 0)
+	showUi.Visible = false
 	Instance.new("UICorner", showUi).CornerRadius = UDim.new(1, 0)
 	
 	local function C_d()
