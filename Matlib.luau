@@ -96,7 +96,9 @@ function MatLib:CreateWindow(Name, Theme)
 	UiName.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	UiName.Text = Name
 	UiName.Name = "Name"
-	Instance.new("UIPadding").PaddingLeft = UDim.new(0, 8)
+	local padding = Instance.new("UIPadding", UiName)
+	padding.PaddingLeft = UDim.new(0, 8)
+
 	
 	local Close = Instance.new("ImageButton", Topbar)
 	Close.BorderSizePixel = 0
@@ -108,7 +110,6 @@ function MatLib:CreateWindow(Name, Theme)
 	Close.BorderColor3 = Color3.fromRGB(0,0,0)
 	Close.Name = 'Close'
 	Close.Position = UDim2.new(1, 0, 0.06667, 0)
-	local cando = Instance.new("LocalScript", Close)
 	
 	local showUi = Instance.new("TextButton", screengui)
 	showUi.TextWrapped = true
@@ -125,24 +126,18 @@ function MatLib:CreateWindow(Name, Theme)
 	showUi.Position = UDim2.new(0.45172, 0, 0.12371, 0)
 	showUi.Visible = false
 	Instance.new("UICorner", showUi).CornerRadius = UDim.new(1, 0)
-	
-	local function C_d()
-	local script = cando
-		local closebutton = script.Parent
-		local frame = closebutton.Parent.Parent
-		local openbutton = frame.Parent["Show Ui"]
 
-		closebutton.MouseButton1Click:Connect(function()
-			frame.Visible = false
-			openbutton.Visible = true
-		end)
+	Close.MouseButton1Click:Connect(function()
+		main.Visible = false
+		showUi.Visible = true
+	end)
 
-		openbutton.MouseButton1Click:Connect(function()
-			frame.Visible = true
-			openbutton.Visible = false
-		end)
-	end
-	task.spawn(C_d)
+	showUi.MouseButton1Click:Connect(function()
+		main.Visible = true
+		showUi.Visible = false
+	end)
+
+	return screengui
 end
 
 return MatLib
